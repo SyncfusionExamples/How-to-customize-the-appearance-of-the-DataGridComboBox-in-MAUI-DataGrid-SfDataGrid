@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp1"
+             xmlns:dataGrid="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             x:Class="MauiApp1.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:OrderInfoRepository x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+    <dataGrid:SfDataGrid x:Name="dataGrid"
+                         AutoGenerateColumnsMode="None"
+                         ColumnWidthMode="Auto"
+                         SelectionMode="Single"
+                         AllowEditing="True"
+                         ItemsSource="{Binding OrderInfoCollection}">
+        <dataGrid:SfDataGrid.Columns>
+            <dataGrid:DataGridTextColumn MappingName="OrderID" 
+                                         HeaderText="Order ID"/>
+            <dataGrid:DataGridTextColumn MappingName="CustomerID" 
+                                         HeaderText="Customer ID"/>
+            <dataGrid:DataGridComboBoxColumn MappingName="Customer" 
+                                             HeaderText="Customer Name"
+                                             HeaderTextAlignment="Start"
+                                             Width="200"
+                                             ItemsSource="{Binding CustomerNames}"/>
+            <dataGrid:DataGridTextColumn MappingName="ShipCity" 
+                                         HeaderText="Ship City"/>
+            <dataGrid:DataGridTextColumn MappingName="ShipCountry" 
+                                         HeaderText="Ship Country"/>
+            <dataGrid:DataGridTextColumn MappingName="Price" 
+                                         HeaderText="Total Price"/>
+        </dataGrid:SfDataGrid.Columns>
+    </dataGrid:SfDataGrid>
+</ContentPage>
